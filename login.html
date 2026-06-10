@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta</title>
+
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="contenedor">
+
+        <h1>UrbanKicks</h1>
+
+        <h2>Crear cuenta</h2>
+
+        <input type="text"
+               id="nombre"
+               placeholder="Nombre completo">
+
+        <input type="email"
+               id="correo"
+               placeholder="Correo">
+
+        <input type="password"
+               id="password"
+               placeholder="Contraseña">
+
+        <button onclick="registrar()">
+
+            Registrarse
+
+        </button>
+
+        <hr>
+
+        <h2>Iniciar sesión</h2>
+
+        <input type="email"
+               id="correoLogin"
+               placeholder="Correo">
+
+        <input type="password"
+               id="passwordLogin"
+               placeholder="Contraseña">
+
+        <button onclick="login()">
+
+            Ingresar
+
+        </button>
+
+        <p id="mensaje"></p>
+
+        <a href="index.html">
+
+            Volver a la tienda
+
+        </a>
+
+    </div>
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>
