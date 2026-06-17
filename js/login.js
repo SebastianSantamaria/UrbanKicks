@@ -1,15 +1,15 @@
-function registrar(){
+function registrar() {
 
     const usuario = {
 
         nombre:
-        document.getElementById("nombre").value,
+            document.getElementById("nombre").value,
 
         correo:
-        document.getElementById("correo").value,
+            document.getElementById("correo").value,
 
         password:
-        document.getElementById("password").value
+            document.getElementById("password").value
     };
 
     localStorage.setItem(
@@ -20,37 +20,56 @@ function registrar(){
     alert("Usuario registrado correctamente");
 }
 
-function login(){
+function login() {
 
     const correo =
-    document.getElementById("correoLogin").value;
+        document.getElementById("correoLogin").value;
 
     const password =
-    document.getElementById("passwordLogin").value;
+        document.getElementById("passwordLogin").value;
 
     const usuario =
-    JSON.parse(localStorage.getItem("usuario"));
+        JSON.parse(localStorage.getItem("usuario"));
 
     const mensaje =
-    document.getElementById("mensaje");
+        document.getElementById("mensaje");
 
-    if(
+    if (
         usuario &&
         usuario.correo === correo &&
         usuario.password === password
-    ){
-
-        mensaje.textContent =
-        "¡Bienvenido " +
-        usuario.nombre + "!";
+    ) {
 
         mensaje.style.color = "green";
 
-    }else{
-
         mensaje.textContent =
-        "Correo o contraseña incorrectos";
+            "¡Bienvenido " +
+            usuario.nombre + "!";
+
+        if (correo === "admin@urbankicks.com") {
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "admin/index.html";
+
+            }, 1500);
+
+        } else {
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "index.html";
+
+            }, 1500);
+        }
+
+    } else {
 
         mensaje.style.color = "red";
+
+        mensaje.textContent =
+            "Correo o contraseña incorrectos";
     }
 }
