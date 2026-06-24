@@ -2,6 +2,7 @@ let productos =
 JSON.parse(localStorage.getItem("productos"));
 
 if(!productos){
+    
 productos = [
     {
         nombre: "Nike Air Max",
