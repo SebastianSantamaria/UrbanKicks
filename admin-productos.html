@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Administrar Productos</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+
+padding:30px;
+
+background:#f5f5f5;
+}
+
+input{
+
+display:block;
+
+width:300px;
+
+padding:10px;
+
+margin:10px 0;
+}
+
+button{
+
+padding:10px 20px;
+
+cursor:pointer;
+}
+
+table{
+
+width:100%;
+
+background:white;
+
+margin-top:20px;
+
+border-collapse:collapse;
+}
+
+th,td{
+
+padding:10px;
+
+border:1px solid #ddd;
+}
+
+img{
+
+width:80px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Administrar Productos</h1>
+
+<input id="nombre" placeholder="Nombre">
+
+<input id="precio" placeholder="Precio">
+
+<input id="imagen" placeholder="URL Imagen">
+
+<button onclick="agregarProducto()">
+
+Agregar Producto
+
+</button>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Imagen</th>
+
+<th>Nombre</th>
+
+<th>Precio</th>
+
+<th>Eliminar</th>
+
+</tr>
+
+</thead>
+
+<tbody id="tablaProductos">
+
+</tbody>
+
+</table>
+
+<script>
+
+let productos =
+JSON.parse(localStorage.getItem("productos"))
+|| [];
+
+mostrarProductos();
+
+function mostrarProductos(){
+
+const tabla =
+document.getElementById("tablaProductos");
+
+tabla.innerHTML = "";
+
+productos.forEach((producto,index)=>{
+
+tabla.innerHTML += `
+
+<tr>
+
+<td>
+
+<img src="${producto.imagen}">
+
+</td>
+
+<td>
+
+${producto.nombre}
+
+</td>
+
+<td>
+
+S/ ${producto.precio}
+
+</td>
+
+<td>
+
+<button onclick="eliminarProducto(${index})">
+
+Eliminar
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+function agregarProducto(){
+
+const nuevo = {
+
+nombre:
+document.getElementById("nombre").value,
+
+precio:
+Number(document.getElementById("precio").value),
+
+imagen:
+document.getElementById("imagen").value
+
+};
+
+productos.push(nuevo);
+
+localStorage.setItem(
+"productos",
+JSON.stringify(productos)
+);
+
+mostrarProductos();
+
+alert("Producto agregado");
+
+}
+
+function eliminarProducto(index){
+
+productos.splice(index,1);
+
+localStorage.setItem(
+"productos",
+JSON.stringify(productos)
+);
+
+mostrarProductos();
+
+}
+
+</script>
+
+</body>
+
+</html>

@@ -1,4 +1,10 @@
-const productos = [
+let productos =
+JSON.parse(localStorage.getItem("productos"));
+
+if(!productos){
+
+productos = [
+
     {
         nombre: "Nike Air Max",
         precio: 449,
@@ -23,43 +29,15 @@ const productos = [
         nombre: "Nike Dunk Low",
         precio: 469,
         imagen: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500"
-    },
-    {
-        nombre: "Adidas Superstar",
-        precio: 329,
-        imagen: "https://images.unsplash.com/photo-1514989940723-e8e51635b782?w=500"
-    },
-    {
-        nombre: "Converse Chuck Taylor",
-        precio: 259,
-        imagen: "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=500"
-    },
-    {
-        nombre: "Vans Old Skool",
-        precio: 299,
-        imagen: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500"
-    },
-    {
-        nombre: "Nike Jordan 1",
-        precio: 699,
-        imagen: "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500"
-    },
-    {
-        nombre: "Adidas Ultraboost",
-        precio: 549,
-        imagen: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500"
-    },
-    {
-        nombre: "Puma Suede Classic",
-        precio: 279,
-        imagen: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500"
-    },
-    {
-        nombre: "New Balance 574",
-        precio: 389,
-        imagen: "https://images.unsplash.com/photo-1543508282-6319a3e2621f?w=500"
     }
 ];
+
+localStorage.setItem(
+"productos",
+JSON.stringify(productos)
+);
+
+}
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 actualizarContador();
