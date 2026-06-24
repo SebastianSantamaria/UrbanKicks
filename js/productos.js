@@ -2,7 +2,6 @@ let productos =
 JSON.parse(localStorage.getItem("productos"));
 
 if(!productos){
- git status
 productos = [
     {
         nombre: "Nike Air Max",
