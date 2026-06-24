@@ -2,32 +2,42 @@ let productos =
 JSON.parse(localStorage.getItem("productos"));
 
 if(!productos){
-
+ git status
 productos = [
-
     {
         nombre: "Nike Air Max",
-        precio: 449,
+       precio: 449,
+        categoria: "hombre",
         imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
     },
     {
         nombre: "Adidas Forum",
         precio: 399,
+        categoria: "hombre",
         imagen: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500"
     },
     {
         nombre: "Puma RS-X",
         precio: 349,
+        categoria: "hombre",
         imagen: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=500"
     },
     {
         nombre: "New Balance 550",
         precio: 429,
+        categoria: "hombre",
         imagen: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500"
     },
     {
         nombre: "Nike Dunk Low",
         precio: 469,
+        categoria: "hombre",
+        imagen: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500"
+    },
+    {
+        nombre: "Nike Dunk Low",
+        precio: 469,
+        categoria: "mujer",
         imagen: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500"
     }
 ];
@@ -59,7 +69,13 @@ function mostrarProductos(listaProductos){
 
                 <img src="${producto.imagen}" alt="${producto.nombre}">
 
-                <h3>${producto.nombre}</h3>
+                <h3>${producto.nombre}
+                
+                 ${producto.oferta ?
+                 '<span class="oferta">🔥 OFERTA</span>'
+                 : ''}
+
+                  </h3> 
 
                 <p>S/ ${producto.precio}</p>
 
@@ -113,3 +129,37 @@ document.getElementById("buscador")
     mostrarProductos(filtrados);
 
 });
+function mostrarTodo(){
+
+    mostrarProductos(productos);
+}
+
+function mostrarHombre(){
+
+    const hombre =
+    productos.filter(producto =>
+        producto.categoria === "hombre"
+    );
+
+    mostrarProductos(hombre);
+}
+
+function mostrarMujer(){
+
+    const mujer =
+    productos.filter(producto =>
+        producto.categoria === "mujer"
+    );
+
+    mostrarProductos(mujer);
+}
+
+function mostrarOfertas(){
+
+    const ofertas =
+    productos.filter(producto =>
+        producto.oferta === true
+    );
+
+    mostrarProductos(ofertas);
+}
